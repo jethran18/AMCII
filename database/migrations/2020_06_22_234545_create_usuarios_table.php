@@ -18,6 +18,7 @@ class CreateUsuariosTable extends Migration
             $table->string('nombre',100);
             $table->string('apellidos',100);
             $table->string('username',25);
+            $table->string('email',100);
             $table->string('password',100);
             $table->string('rol',50);
             

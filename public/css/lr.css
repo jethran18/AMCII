@@ -47,6 +47,7 @@ button {
     font-size: 12px;
     font-weight: bold;
     padding: 12px 45px;
+    margin-top: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
@@ -85,13 +86,13 @@ input {
     border: none;
     border-radius: 5px;
     padding: 12px 15px;
-    margin: 8px 0;
+    margin: 8px 10px ;
     width: 100%;
     color: white;
 }
 
 .social-container {
-    margin: 20px 0;
+    margin: 20px ;
 }
 
 .social-container a {
@@ -113,7 +114,7 @@ input {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
-    width: 800px;
+    width: 900px;
     max-width: 100%;
     min-height: 500px;
 }

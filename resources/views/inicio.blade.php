@@ -3,10 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=egde"/>
 
         <title>AMCII</title>
+        <link rel="stylesheet" href="css/app.css">
+
+
         <link href="{{ asset('../../css/lr.css') }}" rel="stylesheet">
+        
+        <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+        
         
         <style>
             body{
@@ -15,32 +20,35 @@
                 -moz-background-size: cover;
                 -o-background-size: cover;
                 background-size: cover;
-
             }
         </style>
     
 
     </head>
     <body>
+        @include('error')
         <div class="container" id="container">
             <div class="form-container sign-up-container">
-                <form action="#">
+            <form action="{{ route('usuario.crearUsuario') }}" method="POST">
+                @csrf 
+            
                 <h1>Crear Cuenta</h1>
-                      
-                <input type="text" placeholder="Nombre" />
-                <input type="text" placeholder="Apellidos" />
-                <input type="text" placeholder="Username" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Contraseña" />
-                <input type="password" placeholder="Repetir Contraseña" />
+                <input type="text"  placeholder="Nombre" name="nombre"/>
+                <input type="text" placeholder="Apellidos" name="apellidos"/>
+                <input type="text" placeholder="Username" name="username"/>
+                <input type="email" placeholder="Email" name="correo"/>
+                <input type="password" placeholder="Contraseña" name="password"/>
+                <input type="password" placeholder="Repetir Contraseña" name="rpassword"/>
 
-                <button>Registrarse</button>
+                <button type="submit">Registrarse</button>
                 </form>
             </div>
             
              <div class="form-container sign-in-container">
                     <form action="#">
-                        <h1>Iniciar Sesión</h1>                       
+                        @csrf 
+                        <h1>Iniciar Sesión</h1> 
+                                              
                         <input type="text" placeholder="Username" />
                         <input type="password" placeholder="Contraseña" />
                         <button>Iniciar Sesion</button>
@@ -48,7 +56,6 @@
                 </div>
 
             <div class="overlay-container">
-                <!-- The overlay code goes here -->
                     <div class="overlay">
                         <div class="overlay-panel overlay-left">
                             <h1>Bienvenido a AMCIIES!</h1>
@@ -66,8 +73,8 @@
 
             </div>
         </div>
-
-        <script src="{{  asset('../../js/login_animacion.js') }}"></script>
+      
+        <script src="{{  asset('../../js/login_animacion.js') }}"></script>        
         
     </body>
 </html>

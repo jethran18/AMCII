@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/getUsuario', 'UsuarioController@index');
+Route::post('/', 'UsuarioController@crearUsuario')->name('usuario.crearUsuario');
