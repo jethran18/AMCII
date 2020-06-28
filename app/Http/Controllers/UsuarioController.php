@@ -11,7 +11,7 @@ class UsuarioController extends Controller
     //
     public function index(){
         //recuperar usuarios
-        return ('hola');
+       return view('principalUsuario');
     }
 
     public function crearUsuario(UsuarioCreateRequest $request){

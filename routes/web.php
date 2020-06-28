@@ -17,5 +17,8 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-Route::get('/getUsuario', 'UsuarioController@index');
+
+
+Route::get('/usuario', 'UsuarioController@index');
 Route::post('/', 'UsuarioController@crearUsuario')->name('usuario.crearUsuario');
+

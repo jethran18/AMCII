@@ -1,0 +1,22 @@
+body {
+    background-color: #2C003E;
+}
+
+#barra-superior {
+    background-color: #FE346E;
+    margin: 0 0 0 0;
+    width: 100%;
+    height: 40px;
+    padding: 5px 5px 5px 5px;
+}
+
+svg {
+    color: white;
+    float: left;
+}
+
+h2 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
