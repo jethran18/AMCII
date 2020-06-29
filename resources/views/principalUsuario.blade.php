@@ -36,11 +36,9 @@
 
             <table class="table">
                 <tbody>
-                    @for ($i = 0; $i < -1; $i++)
-                        <tr>
-                            <input type="submit" id="tableros">
-                        </tr>
-                    @endfor
+                    @foreach ($tableros as $tablero)
+                        <input type="submit" id="tableros" value="{{$tablero->nombre}}">
+                    @endforeach
                     
                 </tbody>
                 <tfoot>

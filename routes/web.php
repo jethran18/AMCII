@@ -17,10 +17,5 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-Route::post('/principal', 'UsuarioController@index')->name('usuario.index');
-/*Route::get('/admin_Menu', function () {
-    return view('admin_Menu');
-});*/
-Route::post('/', 'UsuarioController@crearUsuario')->name('usuario.crearUsuario');
-
-Route::post('/', 'UsuarioController@UsuarioLogin')->name('usuario.login');
+Route::post('/registrar', 'UsuarioController@crearUsuario')->name('usuario.crearUsuario');
+Route::post('/principal', 'UsuarioController@UsuarioLogin')->name('usuario.login');
