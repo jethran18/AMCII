@@ -17,6 +17,5 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-Route::post('/', 'UsuarioController@crearUsuario')->name('usuario.crearUsuario');
-
-Route::post('/principal', 'UsuarioController@index')->name('usuario.index');
+Route::post('/registrar', 'UsuarioController@crearUsuario')->name('usuario.crearUsuario');
+Route::post('/principal', 'UsuarioController@UsuarioLogin')->name('usuario.login');

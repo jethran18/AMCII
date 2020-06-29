@@ -35,9 +35,9 @@
        <div id="contenedor-tablero" class="col">
             <table class="table">
                 <tbody>
-                   @foreach ($tableros as $tablero)
+                    @foreach ($tableros as $tablero)
                         <input type="submit" id="tableros" value="{{$tablero->nombre}}">
-                   @endforeach
+                    @endforeach
                     
                 </tbody>
                 <tfoot>

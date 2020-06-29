@@ -4,9 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>AMCII</title>
+        <title>AMCIIES</title>
         <link rel="stylesheet" href="css/app.css">
-
         <link href="{{ asset('../../css/lr.css') }}" rel="stylesheet">
         
         <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
@@ -65,12 +64,12 @@
             </div>
             
              <div class="form-container sign-in-container">
-                    <form action="{{ route('usuario.index') }}" method="GET">
+                    <form action="{{ route('usuario.login') }}" method="POST">
                         @csrf 
                         <h1>Iniciar Sesión</h1> 
-
-                        <input type="text" placeholder="Username" />
-                        <input type="password" placeholder="Contraseña" />
+                                              
+                        <input type="text" placeholder="Username" name="username" />
+                        <input type="password" placeholder="Contraseña" name="password" />
                         <button type="submit">Iniciar Sesion</button>
                     </form>
                 </div>

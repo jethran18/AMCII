@@ -10,19 +10,8 @@ use DB;
 class UsuarioController extends Controller
 {
     //
-    public function loginUsuario(){
-        //recuperal al usuario
-        $id = 1;
-        //recuperar tableros
-        $tableros = DB::table('tableros')
-        ->join('actividads', 'actividads.tablero_id', '=', 'tableros.id')
-        ->where('actividads.usuario_id', '=', $id)
-        ->select('tableros.id', 'tableros.nombre')
-        ->get();
-
-        //recuperar actividades por tablero
- 
-       return view('principalUsuario', compact('tableros'));
+    public function index(){
+        
     }
 
     public function crearUsuario(UsuarioCreateRequest $request){
@@ -33,9 +22,34 @@ class UsuarioController extends Controller
             'username' =>  $request->username,
             'password' => $request->password,
             'email' => $request->correo,
-            'rol' => 0
+            'rol' => 'user'
         ]);
        return back()->with('mensaje', 'Usuario agregado');
 
+    }
+
+    public function UsuarioLogin(Request $request){
+        $usuario = DB::table('usuarios')
+        ->where('username','=',$request->username)
+        ->where('password','=', $request->password)
+        ->get();
+
+        //dd($usuario);
+    
+        if($usuario[0]->rol == 'user'){
+            //recuperar tableros
+            $tableros = DB::table('tableros')
+            ->join('actividads', 'actividads.tablero_id', '=', 'tableros.id')
+            ->where('actividads.usuario_id', '=', $usuario[0]->id)
+            ->select('tableros.id', 'tableros.nombre')
+            ->get();
+
+            //recuperar activdades
+
+            return view('principalUsuario', compact('tableros'));
+        } else {
+
+        }
+        return back()->with('mensaje', $id);
     }
 }
