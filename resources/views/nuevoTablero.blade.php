@@ -7,9 +7,10 @@
                     <span>&times;</span>
                 </button>
             </div>
-            <form action="" method="POST">
+            <form action="{{ route('tablero.crearTablero') }}" method="POST">
                 <div class="modal-body">
                     @csrf
+                    @method('POST')
                     <input type="text" class="form-control" name="nombreTablero" id="input-nombreTablero" placeholder="Nombre del tablero">
                     
                 </div>

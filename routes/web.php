@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::post('/registrar', 'UsuarioController@crearUsuario')->name('usuario.crearUsuario');
 Route::post('/principal', 'UsuarioController@UsuarioLogin')->name('usuario.login');
+Route::post('/nuevoTablero', 'TableroController@crearTablero')->name('tablero.crearTablero');

@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UsuarioCreateRequest;
+use App\Http\Requests\TableroCreateRequest;
 use App\Tablero;
 use Carbon\Carbon;
 
 
 class TableroController extends Controller
 {
+    
     //
     public function getTableros($id){
         //Recuper todas los tableros 
