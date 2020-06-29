@@ -34,7 +34,6 @@
             <div class="form-container sign-up-container">
             <form action="{{ route('usuario.crearUsuario') }}" method="POST">
                 @csrf 
-            
                 <h1>Crear Cuenta</h1>
                 <input type="text"  placeholder="Nombre" name="nombre"/>
                 @error('nombre')
@@ -66,13 +65,13 @@
             </div>
             
              <div class="form-container sign-in-container">
-                    <form action="#">
+                    <form action="{{ route('usuario.index') }}" method="POST">
                         @csrf 
                         <h1>Iniciar Sesión</h1> 
-                                              
+
                         <input type="text" placeholder="Username" />
                         <input type="password" placeholder="Contraseña" />
-                        <button>Iniciar Sesion</button>
+                        <button type="submit">Iniciar Sesion</button>
                     </form>
                 </div>
 

@@ -10,7 +10,15 @@ class UsuarioController extends Controller
 {
     //
     public function index(){
-        //recuperar usuarios
+        //recuperal al usuario
+        $id = 1;
+        //recuperar tableros
+        $tableros = DB::table('tableros')
+        ->join('actividads', 'actividads.tablero_id', '=', 'tableros.id')
+        ->where('actividads.usuario_id', '=', $id)
+        ->select('tableros.id', 'tableros.nombre')
+        ->get();
+
        return view('principalUsuario');
     }
 
