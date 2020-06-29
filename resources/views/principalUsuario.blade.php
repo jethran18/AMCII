@@ -33,18 +33,14 @@
 
     <div id="contenedor" class=row>
        <div id="contenedor-tablero" class="col">
-
             <table class="table">
                 <tbody>
-                    @for ($i = 0; $i < -1; $i++)
-                        <tr>
-                            <input type="submit" id="tableros">
-                        </tr>
-                    @endfor
+                   @foreach ($tableros as $tablero)
+                        <input type="submit" id="tableros" value="{{$tablero->nombre}}">
+                   @endforeach
                     
                 </tbody>
                 <tfoot>
-                    <tr>
                         <td>
                             <button id="tableros" data-toggle="modal" data-target="#createTablero"> 
                                 <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -54,14 +50,13 @@
                                 </svg>
                             </button>
                         </td>
-                    </tr>
                 </tfoot>
             </table>
         @include('nuevoTablero')
        </div>
        <div id="contenedor-actividades" class="col">    
-           
-       </div>
+           <!--  {{$tablero->id}} -->  
+        </div>
     </div>
     
 </body>

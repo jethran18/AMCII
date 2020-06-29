@@ -65,7 +65,7 @@
             </div>
             
              <div class="form-container sign-in-container">
-                    <form action="{{ route('usuario.index') }}" method="POST">
+                    <form action="{{ route('usuario.index') }}" method="GET">
                         @csrf 
                         <h1>Iniciar Sesión</h1> 
 

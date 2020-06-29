@@ -22,12 +22,10 @@ h2 {
 }
 
 #contenedor {
-    background-color: blue;
     margin: 10px;
 }
 
 #contenedor-tablero {
-    background-color: yellow;
     margin: 50px;
     margin-right: 60%;
     padding: 10px;
@@ -65,11 +63,10 @@ h2 {
 
 h4 {
     padding-left: 70px;
-    color: white;
+    color:white;
     font-weight: bold;
 }
 
 .modal-header, .modal-body, .modal-footer {
     background: #2C003E;
-    border: none;
 }

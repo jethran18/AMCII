@@ -7,12 +7,16 @@
                     <span>&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <input type="text" class="form-control" name="nombreTablero" id="input-nombreTablero" placeholder="Nombre del tablero">
-            </div>
-            <div class="modal-footer">
-                <input type="submit" class="btn btn-primary" value="Crear" id="tableros" style="margin: 0 100px 0 100px">
-            </div>
+            <form action="" method="POST">
+                <div class="modal-body">
+                    @csrf
+                    <input type="text" class="form-control" name="nombreTablero" id="input-nombreTablero" placeholder="Nombre del tablero">
+                    
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Crear" id="tableros" style="margin: 0 100px 0 100px">
+                </div>
+            </form>
         </div>
     </div>
 </div>

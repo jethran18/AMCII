@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UsuarioCreateRequest;
 use App\Tablero;
 use Carbon\Carbon;
-use DB;
 
 
 class TableroController extends Controller
@@ -18,12 +17,11 @@ class TableroController extends Controller
         return $tableros;
     }
 
-    public function crearTablero(UsuarioCreateRequest $request){
-       // return $request->all();
+    public function crearTablero(TableroCreateRequest $request){
         $now = Carbon::now();
 
         Tablero::create([
-            'nombre' => $request->nombre,
+            'nombre' => $request->input('nombreTablero'),
             'fechaCreacion' => $now->format('d-m-Y'),
         ]);
 

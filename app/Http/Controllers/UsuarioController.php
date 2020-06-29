@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UsuarioCreateRequest;
 use App\Usuario;
+use DB;
 
 class UsuarioController extends Controller
 {
     //
-    public function index(){
+    public function loginUsuario(){
         //recuperal al usuario
         $id = 1;
         //recuperar tableros
@@ -19,7 +20,9 @@ class UsuarioController extends Controller
         ->select('tableros.id', 'tableros.nombre')
         ->get();
 
-       return view('principalUsuario');
+        //recuperar actividades por tablero
+ 
+       return view('principalUsuario', compact('tableros'));
     }
 
     public function crearUsuario(UsuarioCreateRequest $request){

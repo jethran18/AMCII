@@ -29,7 +29,7 @@ class UsuarioCreateRequest extends FormRequest
             'apellidos' => 'required|min3:|max:100',
             'username' =>  'required|unique:username',
             'password' => 'required|confirmed|min:8',
-            'email' => 'required|unique:email'
+            'email' => 'required|unique:email|email'
         ];
     }
 }
