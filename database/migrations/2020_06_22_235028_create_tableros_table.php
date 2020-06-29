@@ -18,6 +18,9 @@ class CreateTablerosTable extends Migration
             $table->string('nombre',100);
             $table->date('fechaCreacion');
             
+            $table->integer('usuario_id')->unsigned();
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            
             $table->timestamps();
         });
     }

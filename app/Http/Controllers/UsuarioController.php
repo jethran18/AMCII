@@ -10,8 +10,14 @@ use DB;
 class UsuarioController extends Controller
 {
     //
-    public function index(){
-        
+    public function index(Request $request){
+        $id = $request->id;
+        $tableros = DB::table('tableros')
+        ->where('tableros.usuario_id', '=', $id)
+        ->select('tableros.id', 'tableros.nombre')
+        ->get();
+
+        return view('principalUsuario',['id' =>  $id ], compact('tableros', 'id'));
     }
 
     public function crearUsuario(UsuarioCreateRequest $request){
@@ -38,15 +44,10 @@ class UsuarioController extends Controller
     
         if($usuario[0]->rol == 'user'){
             //recuperar tableros
-            $tableros = DB::table('tableros')
-            ->join('actividads', 'actividads.tablero_id', '=', 'tableros.id')
-            ->where('actividads.usuario_id', '=', $usuario[0]->id)
-            ->select('tableros.id', 'tableros.nombre')
-            ->get();
-
+            $id =  $usuario[0]->id;
             //recuperar activdades
+            return redirect()->route('principal.usuario',['id' => $id ]);
 
-            return view('principalUsuario', compact('tableros'));
         } else {
 
         }

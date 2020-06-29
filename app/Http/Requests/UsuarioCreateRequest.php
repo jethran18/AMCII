@@ -26,10 +26,10 @@ class UsuarioCreateRequest extends FormRequest
         return [
             //
             'nombre' => 'required|min:3|max:50',
-            'apellidos' => 'required|min3:|max:100',
-            'username' =>  'required|unique:username',
-            'password' => 'required|confirmed|min:8',
-            'email' => 'required|unique:email|email'
+            'apellidos' => 'required|min:3|max:100',
+            'username' =>  'required',
+            'password' => 'required|min:8',
+            'correo' => 'required'
         ];
     }
 }

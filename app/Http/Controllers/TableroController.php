@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\TableroCreateRequest;
-use App\Tablero;
+use App\model\Tablero;
 use Carbon\Carbon;
 
 
@@ -12,20 +12,26 @@ class TableroController extends Controller
 {
     
     //
-    public function getTableros($id){
+    public function index(){
         //Recuper todas los tableros 
        
-        return $tableros;
+        return 'listo'; 
     }
 
-    public function crearTablero(TableroCreateRequest $request){
+    public function store(Request $request) {
+
         $now = Carbon::now();
 
         Tablero::create([
-            'nombre' => $request->input('nombreTablero'),
-            'fechaCreacion' => $now->format('d-m-Y'),
+            'nombre' => $request->nombreTablero,
+            'fechaCreacion' => $now->format('Y-m-d'),
+            'usuario_id' => $request->id,
         ]);
 
-        return back()->with('mensaje', 'Tablero agregado');    
+        return redirect()->route('principal.usuario',['id' => $request->id ]);
+    }
+
+    public function create(Request $request){
+      
     }
 }

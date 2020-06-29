@@ -19,4 +19,8 @@ class Usuario extends Model
     public function actividades(){
         return $this->hasMany('App\Actividad');
     }
+
+    public function tableros(){
+        return $this->hasMany('App\Tablero');
+    }
 }
