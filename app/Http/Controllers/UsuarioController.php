@@ -35,4 +35,10 @@ class UsuarioController extends Controller
        return back()->with('mensaje', 'Usuario agregado');
 
     }
+
+    public function UsuarioLogin(){
+        $id = DB::table('Usuario')->where('username', username)->where('password', password)->value('id');
+    }
+    return back()->with('mensaje', $id);
+    }
 }
