@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Actividad extends Model
 {
-    protected $table = "Actividad";
+    protected $table = "actividads";
     protected $fillable = [
         'nombre',
-        'fechaRegistro',
+        'fechaCreacion',
         'descripcion',
         'status',
-        
+        'tablero_id',
+        'usuario_id'
     ];
 
     public function tablero(){

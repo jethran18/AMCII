@@ -23,6 +23,7 @@ Route::put('/editarPerfil/{id}', 'UsuarioController@updateUsuario')->name('usuar
 
 
 Route::resource('tablero', 'TableroController');
+Route::resource('actividad', 'ActividadController');
 
 Route::get('/principal/usuario/{id}', 'UsuarioController@index')->name('principal.usuario');
 Route::get('/usuario/perfil/{id}', 'UsuarioController@getUsuario')->name('usuario.getUsuario');
