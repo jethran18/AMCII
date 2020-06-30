@@ -27,3 +27,14 @@ Route::resource('actividad', 'ActividadController');
 
 Route::get('/principal/usuario/{id}', 'UsuarioController@index')->name('principal.usuario');
 Route::get('/usuario/perfil/{id}', 'UsuarioController@getUsuario')->name('usuario.getUsuario');
+
+//Admin
+Route::get('/admin', function () {
+    return view('admin_Menu');
+})->name('admin.menu');
+
+Route::get('/admin/users', 'UsuarioController@getUsuarios')->name('admin.usuarios');
+
+Route::get('/admin/activities', function () {
+    return view('admin_Activities');
+})->name('admin.actividades');
