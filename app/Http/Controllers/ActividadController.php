@@ -58,7 +58,7 @@ class ActividadController extends Controller
         $actividades = DB::table('actividads')
         ->join('usuarios', 'actividads.usuario_id', '=', 'usuarios.id')
         ->join('tableros', 'actividads.tablero_id', '=', 'tableros.id')
-        ->select('tableros.nombre', 'actividads.nombre','actividads.fechaCreacion','actividads.status', 'usuarios.username')
+        ->select('tableros.nombreTablero', 'actividads.nombre','actividads.fechaCreacion','actividads.status', 'usuarios.username')
         ->get();
 
         //dd($actividades);

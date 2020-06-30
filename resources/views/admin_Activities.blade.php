@@ -52,10 +52,10 @@
                     @if (!empty($actividades))
                         @foreach ($actividades as $actividad)
                             <tr>
+                                <td>{{$actividad->nombreTablero}}</td>
                                 <td>{{$actividad->nombre}}</td>
-                                <td>{{$actividad->nombre}}</td>
-                                <td>{{$actividad->fechaCreacion}}</td>
                                 <td>{{$actividad->status}}</td>
+                                <td>{{$actividad->fechaCreacion}}</td>
                                 <td>{{$actividad->username}}</td>
                             </tr>
                         @endforeach    
