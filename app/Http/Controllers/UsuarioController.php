@@ -14,7 +14,7 @@ class UsuarioController extends Controller
         $id = $request->id;
         $tableros = DB::table('tableros')
         ->where('tableros.usuario_id', '=', $id)
-        ->select('tableros.id', 'tableros.nombre')
+        ->select('tableros.id', 'tableros.nombreTablero')
         ->get();
 
         $actividades = DB::table('actividads')

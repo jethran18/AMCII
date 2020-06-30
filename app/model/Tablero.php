@@ -8,7 +8,7 @@ class Tablero extends Model
 {
     protected $table = "tableros";
     protected $fillable = [
-        'nombre',
+        'nombreTablero',
         'fechaCreacion',
         'usuario_id'
     ];

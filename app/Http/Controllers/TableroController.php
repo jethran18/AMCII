@@ -23,7 +23,7 @@ class TableroController extends Controller
         $now = Carbon::now();
 
         Tablero::create([
-            'nombre' => $request->nombreTablero,
+            'nombreTablero' => $request->nombreTablero,
             'fechaCreacion' => $now->format('Y-m-d'),
             'usuario_id' => $request->id,
         ]);

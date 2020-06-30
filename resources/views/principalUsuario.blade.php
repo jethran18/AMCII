@@ -50,12 +50,12 @@
     </div>
    
     <div id="contenedor" class=row>
-       <div id="contenedor-tablero" class="col-md-3">
+       <div id="contenedor-tablero" class="col-md-2">
             <table class="table">
                 <tbody>
                     @if (!empty($tableros))
                         @foreach ($tableros as $tablero)
-                            <input type="submit" id="tableros" value="{{$tablero->nombre}}">
+                            <input type="submit" id="tableros" value="{{$tablero->nombreTablero}}">
                         @endforeach    
                     @endif
                     
@@ -63,13 +63,18 @@
                 <tfoot>
                         <td>
                             <button id="tableros" data-toggle="modal" data-target="#createTablero"> 
-                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
                                     <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
                                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                 </svg>
                             </button>
                         </td>
+                        <tr>
+                            <td>
+                                <a class="btn btn-primary" id="tableros" type="submit" href="{{ route('actividad.getActividadesUser', ['id'=> $id]) }}"> Total de actividades </a>
+                            </td>
+                        </tr>
                 </tfoot>
             </table>
     @include('nuevoTablero')
@@ -77,7 +82,6 @@
        <div id="contenedor-actividades" class="col-md-9">    
             <table class="table">
                 <tbody>
-                    <tr>
                         <td>
                             <div class="d-flex flex-row">
                                 <div class="p-2 bd-highlight" id="actividades">
@@ -100,7 +104,6 @@
                                 @endif
                             </div>
                         </td>
-                    </tr>
                 </tbody>             
             </table>
             @include('nuevaActividad')

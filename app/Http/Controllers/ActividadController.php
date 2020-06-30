@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ActividadCreateRequest;
 use App\model\Actividad;
 use Carbon\Carbon;
+use DB;
 
 
 class ActividadController extends Controller
@@ -13,8 +14,9 @@ class ActividadController extends Controller
     
     //
     public function index(Request $request){
-        //Recuper todas las actividades 
-        
+       
+        //recuperar todas las actividades 
+
         return 'listo'; 
     }
 
@@ -35,5 +37,20 @@ class ActividadController extends Controller
 
     public function create(Request $request){
       
+    }
+
+    public function getActividadesUsuario(Request $request) {
+        $id = $request->id;
+        $headers=['Tablero', 'Actividad', 'Estatus', 'Fecha', 'Realizada' ];
+        
+        $actividades = DB::table('actividads')
+            ->where('actividads.usuario_id', '=', $id)
+            ->join('tableros', 'tableros.id', '=', 'actividads.tablero_id')
+            ->select('actividads.id', 'actividads.nombre','actividads.status','actividads.fechaCreacion', 'tableros.nombreTablero')
+            ->get();
+            
+        //dd($headers);
+
+        return view('totalActividadesUsuario',['id' =>  $id ], compact('actividaes', 'headers'));
     }
 }

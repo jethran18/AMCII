@@ -20,7 +20,7 @@
                         <option value="">-- Seleccione --</option>
                         @if (!empty($tableros))
                             @foreach ($tableros as $tablero)
-                                <option value="{{$tablero->id}}">{{$tablero->nombre}}</option>
+                                <option value="{{$tablero->id}}">{{$tablero->nombreTablero  }}</option>
                             @endforeach    
                         @endif
                     </select><br>

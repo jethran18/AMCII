@@ -27,3 +27,6 @@ Route::resource('actividad', 'ActividadController');
 
 Route::get('/principal/usuario/{id}', 'UsuarioController@index')->name('principal.usuario');
 Route::get('/usuario/perfil/{id}', 'UsuarioController@getUsuario')->name('usuario.getUsuario');
+
+
+Route::get('/actividades/usuario/{id}', 'ActividadController@getActividadesUsuario')->name('actividad.getActividadesUser');
