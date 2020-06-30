@@ -17,6 +17,7 @@
     <link href="{{ asset('../../css/principalUsuario.css') }}" rel="stylesheet">
 
     <!--scripts-->
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 
 </head>
@@ -33,7 +34,7 @@
     </div>
    
     <div id="contenedor" class=row>
-       <div id="contenedor-tablero" class="col">
+       <div id="contenedor-tablero" class="col-md-3">
             <table class="table">
                 <tbody>
                     @if (!empty($tableros))
@@ -57,8 +58,36 @@
             </table>
     @include('nuevoTablero')
        </div>
-       <div id="contenedor-actividades" class="col">    
-          
+       <div id="contenedor-actividades" class="col-md-9">    
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="d-flex flex-row">
+                                <div class="p-2 bd-highlight" id="actividades">
+                                    <button id="actividades" data-toggle="modal" data-target="#createActividad"> 
+                                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                                            <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                                            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                @if (!empty($actividades))
+                                    @foreach ($actividades as $actividad)
+                                        <div class="p-2 bd-highlight" id="actividades" class="actividads_{{$actividad->tablero_id}}">
+                                            <b>{{$actividad->nombre}} </b><br>
+                                            <span class="fa-calendar"></span><b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
+                                            <b>{{$actividad->fechaCreacion}}</b> 
+                                        </div>
+                                    @endforeach    
+                                @endif
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>             
+            </table>
+            @include('nuevaActividad')
         </div>
     </div>
     

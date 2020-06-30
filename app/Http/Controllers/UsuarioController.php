@@ -17,7 +17,12 @@ class UsuarioController extends Controller
         ->select('tableros.id', 'tableros.nombre')
         ->get();
 
-        return view('principalUsuario',['id' =>  $id ], compact('tableros', 'id'));
+        $actividades = DB::table('actividads')
+        ->where('actividads.usuario_id', '=', $id)
+        ->select('actividads.id', 'actividads.nombre', 'actividads.tablero_id', 'actividads.descripcion', 'actividads.fechaCreacion', 'actividads.status')
+        ->get();
+
+        return view('principalUsuario',['id' =>  $id ], compact('tableros', 'id', 'actividades'));
     }
 
     public function crearUsuario(UsuarioCreateRequest $request){

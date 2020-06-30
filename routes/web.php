@@ -20,5 +20,6 @@ Route::get('/', function () {
 Route::post('/registrar', 'UsuarioController@crearUsuario')->name('usuario.crearUsuario');
 Route::post('/login', 'UsuarioController@UsuarioLogin')->name('usuario.login');
 Route::resource('tablero', 'TableroController');
+Route::resource('actividad', 'ActividadController');
 
 Route::get('/principal/usuario/{id}', 'UsuarioController@index')->name('principal.usuario');
