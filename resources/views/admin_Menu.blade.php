@@ -33,8 +33,8 @@
         </div>
         
         <div class="container" id="container">
-            <a href="{{route('admin.usuarios')}}" class="btAdmin" >Usuarios</a>
-            <a href="{{route('admin.actividades')}}" class="btAdmin" >Actividades</a>
+            <a href="{{route('admin.usuarios')}}" id="btAdmin" class="btn btn-primary">Usuarios</a>
+            <a href="{{route('admin.actividades')}}" id="btAdmin" class="btn btn-primary">Actividades</a>
         </div>
         
     </body>

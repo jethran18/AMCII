@@ -33,13 +33,13 @@
         </div>
         
         <div class="container" id="containerT">
-        <div>
-        <a href="" class="btn btn-primary" >Dar de baja Usuario</a>
+        <div class >
+        <a href="" class="btn btn-primary" id="usersD" >Dar de baja Usuario</a>
         </div>
         
 
-        <div class="table-responsive" >          
-            <table class="table table-dark" id="tabla">
+        <div class="table-responsive" id="tabla">          
+            <table class="table table-dark">
             <thead>
                 <tr>
                     <th>id</th>
