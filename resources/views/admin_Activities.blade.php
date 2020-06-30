@@ -32,30 +32,34 @@
             </h2>
         </div>
         
-        <div class="container" id="container">
-        <a href="" class="btn btn-primary" >Usuasrios</a>
-
-        <div class="table-responsive">          
-            <table class="table">
-                <thead>
+        <div class="container" id="containerT">
+        <div class >
+        <a href="" class="btn btn-primary" id="usersD" >Generar reporte</a>
+        </div>
+        
+        <div class="table-responsive" id="tabla">          
+            <table class="table table-dark">
+            <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Age</th>
-                    <th>City</th>
-                    <th>Country</th>
+                    <th>Tablero</th>
+                    <th>Actividad</th>
+                    <th>Estatus</th>
+                    <th>Fecha</th>
+                    <th>Usuario</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Anna</td>
-                    <td>Pitt</td>
-                    <td>35</td>
-                    <td>New York</td>
-                    <td>USA</td>
-                </tr>
+                    @if (!empty($actividades))
+                        @foreach ($actividades as $actividad)
+                            <tr>
+                                <td>{{$actividad->nombre}}</td>
+                                <td>{{$actividad->nombre}}</td>
+                                <td>{{$actividad->fechaCreacion}}</td>
+                                <td>{{$actividad->status}}</td>
+                                <td>{{$actividad->username}}</td>
+                            </tr>
+                        @endforeach    
+                    @endif
                 </tbody>
             </table>
             </div>

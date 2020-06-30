@@ -36,6 +36,4 @@ Route::get('/admin', function () {
 
 Route::get('/admin/users', 'UsuarioController@getUsuarios')->name('admin.usuarios');
 
-Route::get('/admin/activities', function () {
-    return view('admin_Activities');
-})->name('admin.actividades');
+Route::get('/admin/activities','ActividadController@getActividadesAll')->name('admin.actividades');
