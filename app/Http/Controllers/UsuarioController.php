@@ -64,7 +64,7 @@ class UsuarioController extends Controller
             return redirect()->route('principal.usuario',['id' => $id ]);
 
         } else {
-
+            return view('admin_Menu');
         }
         return back()->with('mensaje', $id);
     }
@@ -83,4 +83,14 @@ class UsuarioController extends Controller
 
         return redirect()->route('usuario.getUsuario',['id' => $id ]);        
     }
+
+    public function getUsuarios(){
+        $usuarios = DB::table('usuarios')
+        ->where('rol','=','user')
+        ->get();
+        //dd($usuarios);
+
+        return view('admin_Users')->with('usuarios', $usuarios);
+    }
+    
 }
