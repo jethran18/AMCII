@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UsuarioCreateRequest;
-use App\Usuario;
+use App\model\Usuario;
 use DB;
 
 class UsuarioController extends Controller
@@ -18,6 +18,16 @@ class UsuarioController extends Controller
         ->get();
 
         return view('principalUsuario',['id' =>  $id ], compact('tableros', 'id'));
+    }
+
+    public function getUsuario(Request $request) {
+        $id = $request->id;
+
+        $usuario = Usuario::findOrFail($id);
+
+        //dd($usuario);
+        return view('infoUsuario',['id' =>  $id ], compact('usuario'));
+        
     }
 
     public function crearUsuario(UsuarioCreateRequest $request){
@@ -52,5 +62,20 @@ class UsuarioController extends Controller
 
         }
         return back()->with('mensaje', $id);
+    }
+
+    public function updateUsuario(Request $request) {
+        $id = $request->id;
+
+        $usuario = Usuario::findOrFail($id);
+        $usuario->nombre = $request->nombre;
+        $usuario->apellidos = $request->apellidos;
+        $usuario->username = $request->username;
+        $usuario->email = $request->correo;
+
+        $usuario->save();
+
+
+        return redirect()->route('usuario.getUsuario',['id' => $id ]);        
     }
 }
