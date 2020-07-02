@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ActividadCreateRequest;
 use App\model\Actividad;
 use Carbon\Carbon;
+use DB;
 
 
 class ActividadController extends Controller
@@ -64,5 +65,32 @@ class ActividadController extends Controller
   
         return redirect()->route('principal.usuario',['id' => $actividad->usuario_id ])
                         ->with('success','actividad eliminada correctamente.');
+    }
+    
+    public function getActividadesUsuario(Request $request) {
+        $id = $request->id;
+        $headers=['Tablero', 'Actividad', 'Estatus', 'Fecha', 'Realizada' ];
+        
+        $actividades = DB::table('actividads')
+            ->where('actividads.usuario_id', '=', $id)
+            ->join('tableros', 'tableros.id', '=', 'actividads.tablero_id')
+            ->select('actividads.id', 'actividads.nombre','actividads.status','actividads.fechaCreacion', 'tableros.nombreTablero')
+            ->get();
+            
+        //dd($headers);
+
+        return view('totalActividadesUsuario',['id' =>  $id ], compact('actividades', 'headers'));
+    }
+
+    public function getActividadesAll(){
+        $actividades = DB::table('actividads')
+        ->join('usuarios', 'actividads.usuario_id', '=', 'usuarios.id')
+        ->join('tableros', 'actividads.tablero_id', '=', 'tableros.id')
+        ->select('tableros.nombreTablero', 'actividads.nombre','actividads.fechaCreacion','actividads.status', 'usuarios.username')
+        ->get();
+
+        //dd($actividades);
+
+        return view('admin_Activities')->with('actividades', $actividades);
     }
 }

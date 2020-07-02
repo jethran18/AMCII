@@ -15,7 +15,7 @@ class CreateTablerosTable extends Migration
     {
         Schema::create('tableros', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',100);
+            $table->string('nombreTablero',100);
             $table->date('fechaCreacion');
             
             $table->integer('usuario_id')->unsigned();
