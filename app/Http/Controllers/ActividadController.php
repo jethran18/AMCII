@@ -51,6 +51,6 @@ class ActividadController extends Controller
             
         //dd($headers);
 
-        return view('totalActividadesUsuario',['id' =>  $id ], compact('actividaes', 'headers'));
+        return view('totalActividadesUsuario',['id' =>  $id ], compact('actividades', 'headers'));
     }
 }

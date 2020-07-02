@@ -33,13 +33,45 @@ h2 {
 }
 
 #container {
-    background-color: red;
     padding: 30px;
 }
 
-
 #container-tablero {
-    background-color: yellow;
     width: 100%;
 }
 
+input[type=submit] {
+    background-color: #FE346E;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#inputGroup{
+    background-color: #2C003E;
+    color: #FE346E;
+    border-color: #FE346E ;
+    width: 50%;
+    margin-left: 200px;
+    float: right;
+}
+#table-Actividades {
+    border: none;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #52195C;
+    color: white;
+    font-weight: bold;
+}
+
+tbody {
+    background-color: #512B58;
+    color: white;
+}
+
+  

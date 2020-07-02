@@ -50,41 +50,61 @@
 
     <!--cuerpo-->
     <div class="container" id="container">
-        <div class="row">
-          <div class="col-sm-6">
-            <input type="submit" id="btGenerarReporte" class="btn btn-primary" value="Generar Reporte">
-          </div>
-          <div class="col-sm-6">
-                <div class="input-group mb-3">
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>Filtro</option>
-                        <option value="1">Pendiente</option>
-                        <option value="2">Atrasadas</option>
-                        <option value="3">Casi Atrasadas</option>
-                        <option value="4">Realizadas</option>
-                    </select>
-                </div>
-        </div>
         <div>
-          <div  id="container-tablero" >
-            <table class="table table-dark">
-                <thead>
-                  <tr>
-                        @for ($i = 0; $i < count($headers); $i++)
-                            <th>
-                                {{$headers[$i]}}
-                            </th>
-                        @endfor
-                  </tr>
-                </thead>
-                <tbody>
-                        
-                </tbody>
-              </table>
-              
-          </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="submit" id="btGenerarReporte" class="btn btn-primary" value="Generar Reporte">
+                </div>
+                <div class="col-sm-6">
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="inputGroup">
+                            <option selected>Filtro</option>
+                            <option value="1">Pendiente</option>
+                            <option value="2">Atrasadas</option>
+                            <option value="3">Casi Atrasadas</option>
+                            <option value="4">Realizadas</option>
+                        </select>
+                    </div>
+                </div>
+            </div>    
+            <div>
+                <div id="container-tablero" class="table-responsive">
+                    <table class="table" id="table-Actividades">
+                        <thead>
+                        <tr>
+                                @for ($i = 0; $i < count($headers); $i++)
+                                    <th>
+                                        {{$headers[$i]}}
+                                    </th>
+                                @endfor
+                        </tr>
+                        </thead>
+                        <tbody>
+                                @foreach ($actividades as $actividad)
+                                <tr>
+                                    <th>
+                                        {{$actividad->nombreTablero}}
+                                    </th>
+                                    <th>
+                                        {{$actividad->nombre}}
+                                    </th>
+                                    <th>
+                                        {{$actividad->status}}
+                                    </th>
+                                    <th>
+                                        {{$actividad->fechaCreacion}}
+                                    </th>
+                                    <th>
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                    </th>
+                                </tr>
+                                @endforeach
+                            
+                        </tbody>
+                    </table>  
+                </div>
+            </div>
         </div>
-      </div>
 
 </body>
 </html>
