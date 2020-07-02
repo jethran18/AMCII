@@ -19,7 +19,7 @@
                         @if ($tablero->id == $actividad->tablero_id)
                             <input type="text" class="form-control" value="{{$tablero->nombre}}" readonly> 
                         @endif
-                    @endforeach    
+                    @endforeach
                 </div>
         </div>
     </div>

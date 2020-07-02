@@ -63,7 +63,7 @@ class ActividadController extends Controller
     {
         $actividad->delete();
   
-        return redirect()->route('principal.usuario',['id' => $request->id ])
+        return redirect()->route('principal.usuario',['id' => $actividad->usuario_id ])
                         ->with('success','actividad eliminada correctamente.');
     }
 }
