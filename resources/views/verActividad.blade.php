@@ -17,7 +17,7 @@
                     <br>
                     @foreach ($tableros as $tablero)
                         @if ($tablero->id == $actividad->tablero_id)
-                            <input type="text" class="form-control" value="{{$tablero->nombre}}" readonly> 
+                            <input type="text" class="form-control" value="{{$tablero->nombreTablero}}" readonly> 
                         @endif
                     @endforeach
                 </div>

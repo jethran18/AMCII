@@ -56,7 +56,7 @@
                 <tbody>
                     @if (!empty($tableros))
                         @foreach ($tableros as $tablero)
-                            <input type="submit" id="tableros" onclick="mostrarActividadesAsociadas('{{$tablero->id}}', '{{$tablero->nombre}}')" value="{{$tablero->nombre}}">
+                            <input type="submit" id="tableros" onclick="mostrarActividadesAsociadas('{{$tablero->id}}', '{{$tablero->nombreTablero}}')" value="{{$tablero->nombreTablero}}">
                         @endforeach    
                     @endif
                     

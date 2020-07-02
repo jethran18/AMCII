@@ -24,9 +24,9 @@
                             @foreach ($tableros as $tablero)
                                 
                                 @if ($tablero->id == $actividad->tablero_id)
-                                    <option value="{{$tablero->id}}" selected="selected" >{{$tablero->nombre}}</option>
+                                    <option value="{{$tablero->id}}" selected="selected" >{{$tablero->nombreTablero}}</option>
                                     @else
-                                    <option value="{{$tablero->id}}" >{{$tablero->nombre}}</option>
+                                    <option value="{{$tablero->id}}" >{{$tablero->nombreTablero}}</option>
                                 @endif
                                 
                             @endforeach    
