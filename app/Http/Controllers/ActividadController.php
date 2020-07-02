@@ -53,4 +53,16 @@ class ActividadController extends Controller
 
         return view('totalActividadesUsuario',['id' =>  $id ], compact('actividades', 'headers'));
     }
+
+    public function getActividadesAll(){
+        $actividades = DB::table('actividads')
+        ->join('usuarios', 'actividads.usuario_id', '=', 'usuarios.id')
+        ->join('tableros', 'actividads.tablero_id', '=', 'tableros.id')
+        ->select('tableros.nombreTablero', 'actividads.nombre','actividads.fechaCreacion','actividads.status', 'usuarios.username')
+        ->get();
+
+        //dd($actividades);
+
+        return view('admin_Activities')->with('actividades', $actividades);
+    }
 }

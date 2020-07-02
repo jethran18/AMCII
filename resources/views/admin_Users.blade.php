@@ -42,11 +42,11 @@
             <table class="table table-dark">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>nombre</th>
-                    <th>apellidos</th>
-                    <th>correo</th>
-                    <th>usuario</th>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Usuario</th>
                 </tr>
                 </thead>
                 <tbody>
