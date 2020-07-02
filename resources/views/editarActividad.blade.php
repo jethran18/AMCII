@@ -34,7 +34,7 @@
                     </select><br>
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-primary" value="actualizar" id="actividades" style="margin: 0 100px 0 100px">
+                    <input type="submit" class="btn btn-primary" value="Actualizar" id="actividades" style="margin: 0 100px 0 100px">
                 </div>
             </form>
         </div>

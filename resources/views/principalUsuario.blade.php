@@ -82,7 +82,7 @@
                                             <i class="fas fa-redo-alt"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
                                             <i class="fas fa-calendar-alt"></i>  <b>{{$actividad->fechaCreacion}}</b><br>
                                             <form action="{{ route('actividad.destroy',$actividad->id) }}" method="POST">
-                                                <a class="btn btn-info" href="{{ route('actividad.show',$actividad->id) }}"><i class="far fa-eye"></i></a>
+                                                <a class="btn btn-info" data-toggle="modal" data-target="#verActividad_{{$actividad->id}}"><i class="far fa-eye"></i></a>
                                 
                                                 <a class="btn btn-primary" data-toggle="modal" data-target="#editActividad_{{$actividad->id}}"><i class="fas fa-edit"></i></a>
                             
@@ -102,6 +102,7 @@
             </table>
             @include('nuevaActividad')
             @include('editarActividad')
+            @include('verActividad')
         </div>
     </div>
     
