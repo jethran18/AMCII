@@ -36,4 +36,34 @@ class ActividadController extends Controller
     public function create(Request $request){
       
     }
+
+    public function edit(Actividad $actividad)
+    {
+        return view('principal.usuario', compact('actividad'));
+    }
+
+    public function update(Request $request, Actividad $actividad)
+    {
+        $request->validate([
+            'nombreActividad' => 'required',
+            'descripcionActividad' => 'required',
+        ]);
+  
+        $actividad->update([
+            'nombre' => $request->nombreActividad,
+            'fechaCreacion' => $request->fechaCreacionActividad,
+            'descripcion' => $request->descripcionActividad,
+            'tablero_id' => $request->tablero_id,
+        ]);
+  
+        return redirect()->route('principal.usuario', ['id' => $actividad->usuario_id ]);
+    }
+
+    public function destroy(Request $request, Actividad $actividad)
+    {
+        $actividad->delete();
+  
+        return redirect()->route('principal.usuario',['id' => $request->id ])
+                        ->with('success','actividad eliminada correctamente.');
+    }
 }

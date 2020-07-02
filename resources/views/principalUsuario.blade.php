@@ -8,6 +8,7 @@
     <title>Principal AMCII</title>
 
     <!--estilos-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -64,6 +65,7 @@
                     <tr>
                         <td>
                             <div class="d-flex flex-row">
+                                @if (!empty($tableros))
                                 <div class="p-2 bd-highlight" id="actividades">
                                     <button id="actividades" data-toggle="modal" data-target="#createActividad"> 
                                         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -77,10 +79,21 @@
                                     @foreach ($actividades as $actividad)
                                         <div class="p-2 bd-highlight" id="actividades" class="actividads_{{$actividad->tablero_id}}">
                                             <b>{{$actividad->nombre}} </b><br>
-                                            <span class="fa-calendar"></span><b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
-                                            <b>{{$actividad->fechaCreacion}}</b> 
+                                            <i class="fas fa-redo-alt"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
+                                            <i class="fas fa-calendar-alt"></i>  <b>{{$actividad->fechaCreacion}}</b><br>
+                                            <form action="{{ route('actividad.destroy',$actividad->id) }}" method="POST">
+                                                <a class="btn btn-info" href="{{ route('actividad.show',$actividad->id) }}"><i class="far fa-eye"></i></a>
+                                
+                                                <a class="btn btn-primary" data-toggle="modal" data-target="#editActividad_{{$actividad->id}}"><i class="fas fa-edit"></i></a>
+                            
+                                                @csrf
+                                                @method('DELETE')
+                                
+                                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
                                         </div>
                                     @endforeach    
+                                @endif
                                 @endif
                             </div>
                         </td>
@@ -88,6 +101,7 @@
                 </tbody>             
             </table>
             @include('nuevaActividad')
+            @include('editarActividad')
         </div>
     </div>
     
