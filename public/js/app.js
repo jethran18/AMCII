@@ -37299,3 +37299,17 @@ module.exports = __webpack_require__(/*! C:\laragon\www\AMCII\resources\sass\app
 /***/ })
 
 /******/ });
+
+
+function mostrarActividadesAsociadas(id, nombreTablero){
+    var claseActiva = "actividads_" + id;
+    item = $(".divActividad");
+    for (var i=0; i < item.length; i++){
+      if($(item[i]).hasClass(claseActiva)) {
+        $(item[i]).show("linear");
+      } else {
+        $(item[i]).hide("linear");
+      }
+    }
+    $("#tituloActividades").html("Actividad del tablero : "+ nombreTablero);
+}

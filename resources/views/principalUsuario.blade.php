@@ -40,7 +40,7 @@
                 <tbody>
                     @if (!empty($tableros))
                         @foreach ($tableros as $tablero)
-                            <input type="submit" id="tableros" value="{{$tablero->nombre}}">
+                            <input type="submit" id="tableros" onclick="mostrarActividadesAsociadas('{{$tablero->id}}', '{{$tablero->nombre}}')" value="{{$tablero->nombre}}">
                         @endforeach    
                     @endif
                     
@@ -61,6 +61,9 @@
        </div>
        <div id="contenedor-actividades" class="col-md-9">    
             <table class="table">
+                <thead>
+                    <tr><th class="text-center"><h3 style="margin-bottom: 0px; color:white;" id="tituloActividades">Todas las actividades</h3></th></tr>
+                </thead>
                 <tbody>
                     <tr>
                         <td>
@@ -77,7 +80,7 @@
                                 </div>
                                 @if (!empty($actividades))
                                     @foreach ($actividades as $actividad)
-                                        <div class="p-2 bd-highlight" id="actividades" class="actividads_{{$actividad->tablero_id}}">
+                                        <div id="actividades" class="p-2 bd-highlight actividads_{{$actividad->tablero_id}} divActividad visible">
                                             <b>{{$actividad->nombre}} </b><br>
                                             <i class="fas fa-redo-alt"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
                                             <i class="fas fa-calendar-alt"></i>  <b>{{$actividad->fechaCreacion}}</b><br>
