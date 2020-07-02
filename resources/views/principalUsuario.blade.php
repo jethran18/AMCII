@@ -82,7 +82,13 @@
                                     @foreach ($actividades as $actividad)
                                         <div id="actividades" class="p-2 bd-highlight actividads_{{$actividad->tablero_id}} divActividad visible">
                                             <b>{{$actividad->nombre}} </b><br>
+                                            @if($actividad->status == "Pendiente")
                                             <i class="fas fa-redo-alt"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
+                                            @elseif ($actividad->status == "Proxima a estar retrasada")
+                                            <i class="fas fa-exclamation-triangle"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
+                                            @else
+                                            <i class="fas fa-ban"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
+                                            @endif
                                             <i class="fas fa-calendar-alt"></i>  <b>{{$actividad->fechaCreacion}}</b><br>
                                             <a class="btn btn-info" data-toggle="modal" data-target="#verActividad_{{$actividad->id}}"><i class="far fa-eye"></i></a>
                                             <a class="btn btn-primary" data-toggle="modal" data-target="#editActividad_{{$actividad->id}}"><i class="fas fa-edit"></i></a>

@@ -14,7 +14,6 @@ class ActividadController extends Controller
     //
     public function index(Request $request){
         //Recuper todas las actividades 
-        
         return 'listo'; 
     }
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UsuarioCreateRequest;
+use App\model\Actividad;
 use App\Usuario;
+use Carbon\Carbon;
 use DB;
 
 class UsuarioController extends Controller
@@ -21,6 +23,27 @@ class UsuarioController extends Controller
         ->where('actividads.usuario_id', '=', $id)
         ->select('actividads.id', 'actividads.nombre', 'actividads.tablero_id', 'actividads.descripcion', 'actividads.fechaCreacion', 'actividads.status')
         ->get();
+
+        $now = Carbon::now();
+        $status = "";
+        foreach ($actividades as $actividad){
+            $fechaInicial = $actividad->fechaCreacion;
+            $fechaActual= date("Y/m/d");
+            $dias = (strtotime($fechaActual)-strtotime($fechaInicial))/86400;
+            $dias = abs($dias); $dias = floor($dias);
+            switch ($dias){
+                case $dias < 0:
+                    $status = "Retrasada";
+                break;
+                case $dias = 0 || $dias <= 3:
+                    $status = "Proxima a estar retrasada";
+                break;
+                default:
+                    $status = "Pendiente";
+                break;
+            }
+            $actividad->status = $status;
+        }
 
         return view('principalUsuario',['id' =>  $id ], compact('tableros', 'id', 'actividades'));
     }
