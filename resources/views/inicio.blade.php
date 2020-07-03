@@ -72,9 +72,21 @@
                     <form action="{{ route('usuario.login') }}" method="POST">
                         @csrf 
                         <h1>Iniciar Sesión</h1> 
-                                              
+                        @if(!empty($mensaje))
+                            <div class="alert alert-danger" role="alert">
+                                {{$mensaje}}                  
+                            </div>
+                        @endif
                         <input type="text" placeholder="Username" name="username" />
+                        @error('username')
+                            <label id="error-label">Ingrese un nombre de usuario</label>
+                        @enderror
+                        
                         <input type="password" placeholder="Contraseña" name="password" />
+                        @error('password')
+                            <label id="error-label">Ingrese una contraseña valida</label>
+                        @enderror
+                        
                         <button type="submit">Iniciar Sesion</button>
                     </form>
                 </div>

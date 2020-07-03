@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UsuarioCreateRequest;
+use App\Http\Requests\UsuarioLoginController;
 use App\model\Actividad;
 use Carbon\Carbon;
 use App\model\Usuario;
@@ -72,14 +73,18 @@ class UsuarioController extends Controller
 
     }
 
-    public function UsuarioLogin(Request $request){
+    public function UsuarioLogin(UsuarioLoginController $request){
         $usuario = DB::table('usuarios')
         ->where('username','=',$request->username)
         ->where('password','=', $request->password)
-        ->get();
+        ->first();
 
         //dd($usuario);
-        
+        if($usuario === null){
+            //user is not found 
+            return view('inicio')->with('mensaje', 'Datos de usuario incorrectos');
+        }
+     
     
         if($usuario[0]->rol == 'user'){
             //recuperar tableros
@@ -87,10 +92,10 @@ class UsuarioController extends Controller
             //recuperar activdades
             return redirect()->route('principal.usuario',['id' => $id ]);
 
-        } else {
+        }  else {
             return view('adminMenu');
         }
-        return back()->with('mensaje', $id);
+        
     }
 
     public function updateUsuario(Request $request) {
