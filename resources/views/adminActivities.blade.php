@@ -34,7 +34,7 @@
         
         <div class="container" id="containerT">
         <div class >
-        <a href="" class="btn btn-primary" id="usersD" >Generar reporte</a>
+        <a href="{{route('admin.reportePDF')}}" class="btn btn-primary" id="usersD" >Generar reporte</a>
         </div>
         
         <div class="table-responsive" id="tabla">          

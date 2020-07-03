@@ -25,7 +25,7 @@ class ActividadController extends Controller
             'nombre' => $request->nombreActividad,
             'fechaCreacion' => $request->fechaCreacionActividad,
             'descripcion' => $request->descripcionActividad,
-            'status' => 'pendiente',
+            'status' => 'Pendiente',
             'tablero_id' => $request->tablero_id,
             'usuario_id' => $request->id,
         ]);
@@ -91,7 +91,7 @@ class ActividadController extends Controller
 
         //dd($actividades);
 
-        return view('admin_Activities')->with('actividades', $actividades);
+        return view('adminActivities')->with('actividades', $actividades);
     }
 
     public function updateActividadesRealizadas(Request $request) {
