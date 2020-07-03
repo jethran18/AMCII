@@ -31,9 +31,18 @@ Route::get('/usuario/perfil/{id}', 'UsuarioController@getUsuario')->name('usuari
 Route::get('/actividades/usuario/{id}', 'ActividadController@getActividadesUsuario')->name('actividad.getActividadesUser');
 //Admin
 Route::get('/admin', function () {
-    return view('admin_Menu');
+    return view('adminMenu');
 })->name('admin.menu');
-
 Route::get('/admin/users', 'UsuarioController@getUsuarios')->name('admin.usuarios');
-
 Route::get('/admin/activities','ActividadController@getActividadesAll')->name('admin.actividades');
+
+
+//Reportes
+Route::get('/reporte_individual', function () {
+    return view('reporteIndividual');
+})->name('reporte.individual');
+Route::get('/repote_individual/usuario/{id}','ReportesController@generarReporteIndividual')->name('reporte.individualPDF');
+Route::get('/admin/reporte', function () {
+    return view('reporteAdmin');
+})->name('admin.reporte');
+Route::get('/admin/reporte_actividades','ReportesController@generarReporte')->name('admin.reportePDF');

@@ -53,7 +53,7 @@
         <div>
             <div class="row">
                 <div class="col-sm-6">
-                    <input type="submit" id="btGenerarReporte" class="btn btn-primary" value="Generar Reporte">
+                    <a href="{{route('reporte.individualPDF', ['id'=> $id])}}"  id="btGenerarReporte" class="btn btn-primary">Generar reporte</a>
                 </div>
                 <div class="col-sm-6">
                     <div class="input-group mb-3">

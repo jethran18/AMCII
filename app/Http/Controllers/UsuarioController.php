@@ -79,6 +79,7 @@ class UsuarioController extends Controller
         ->get();
 
         //dd($usuario);
+        
     
         if($usuario[0]->rol == 'user'){
             //recuperar tableros
@@ -87,7 +88,7 @@ class UsuarioController extends Controller
             return redirect()->route('principal.usuario',['id' => $id ]);
 
         } else {
-            return view('admin_Menu');
+            return view('adminMenu');
         }
         return back()->with('mensaje', $id);
     }
@@ -113,7 +114,7 @@ class UsuarioController extends Controller
         ->get();
         //dd($usuarios);
 
-        return view('admin_Users')->with('usuarios', $usuarios);
+        return view('adminUsers')->with('usuarios', $usuarios);
     }
     
 }

@@ -91,6 +91,6 @@ class ActividadController extends Controller
 
         //dd($actividades);
 
-        return view('admin_Activities')->with('actividades', $actividades);
+        return view('adminActivities')->with('actividades', $actividades);
     }
 }
