@@ -37,3 +37,5 @@ Route::get('/admin', function () {
 Route::get('/admin/users', 'UsuarioController@getUsuarios')->name('admin.usuarios');
 
 Route::get('/admin/activities','ActividadController@getActividadesAll')->name('admin.actividades');
+
+Route::put('/actividades/listas/{id}', 'ActividadController@updateActividadesRealizadas');

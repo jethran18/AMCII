@@ -93,4 +93,20 @@ class ActividadController extends Controller
 
         return view('admin_Activities')->with('actividades', $actividades);
     }
+
+    public function updateActividadesRealizadas(Request $request) {
+
+        $data = $request->resultado;
+        //(dd($request->id);
+
+        foreach ($data as $actividad) {
+            if ($actividad['status']== 'true') {
+                Actividad::find($actividad['id'])->update(['status' => 'Realizada']);
+            }
+        }
+        
+        return redirect()->route('actividad.getActividadesUser',['id' => $request->id])
+                        ->with('success','Actividades modificadas');
+        
+    }
 }
