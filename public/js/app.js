@@ -37313,3 +37313,4 @@ function mostrarActividadesAsociadas(id, nombreTablero){
     }
     $("#tituloActividades").html("Actividad del tablero : "+ nombreTablero);
 }
+

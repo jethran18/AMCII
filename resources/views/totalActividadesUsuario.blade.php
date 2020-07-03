@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>AMCIIES</title>
 
     <!--estilos-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -16,8 +17,10 @@
     <link href="{{ asset('../../css/ttActividadesUser.css') }}" rel="stylesheet">
 
     <!--scripts-->
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+    <script src="{{  asset('../../js/seleccionar_realizadas.js') }}"></script>     
 
 </head>
 <body>
@@ -53,7 +56,7 @@
         <div>
             <div class="row">
                 <div class="col-sm-6">
-                    <input type="submit" id="btGenerarReporte" class="btn btn-primary" value="Generar Reporte">
+                    <a href="{{route('reporte.individualPDF', ['id'=> $id])}}"  id="btGenerarReporte" class="btn btn-primary">Generar reporte</a>
                 </div>
                 <div class="col-sm-6">
                     <div class="input-group mb-3">
@@ -95,7 +98,7 @@
                                         {{$actividad->fechaCreacion}}
                                     </th>
                                     <th>
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="CheckListTarea" value="{{$actividad->id}}">
                                     </th>
                                 </tr>
                                 @endforeach
@@ -104,6 +107,7 @@
                     </table>  
                 </div>
             </div>
+            <input type="submit" id="btnEnviar" onclick="actividadesSeleccionadas({{$id}})" value="Enivar">
         </div>
 
 </body>
