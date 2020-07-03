@@ -25,7 +25,7 @@ class ActividadController extends Controller
             'nombre' => $request->nombreActividad,
             'fechaCreacion' => $request->fechaCreacionActividad,
             'descripcion' => $request->descripcionActividad,
-            'status' => 'pendiente',
+            'status' => 'Pendiente',
             'tablero_id' => $request->tablero_id,
             'usuario_id' => $request->id,
         ]);
