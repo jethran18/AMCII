@@ -14,7 +14,7 @@
                     @csrf<br>
                     <input type="text" class="form-control" name="descripcionActividad" id="input-descripcionActividad" placeholder="Descripción Actividad">
                     @csrf<br>
-                    <input type="date" class="form-control" name="fechaCreacionActividad" id="input-fechaCreacionActividad" placeholder="Fecha Actividad">
+                    <input type="date" class="form-control" min="2000-01-01" max="2025-12-31" name="fechaCreacionActividad" id="input-fechaCreacionActividad" placeholder="Fecha Actividad">
                     @csrf<br>
                     <select class="form-control" name="tablero_id" id="input-tablero_id">
                         <option value="">-- Seleccione --</option>
