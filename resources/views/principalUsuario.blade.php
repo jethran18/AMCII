@@ -56,14 +56,14 @@
                 <tbody>
                     @if (!empty($tableros))
                         @foreach ($tableros as $tablero)
-                            <input type="submit" id="tableros" onclick="mostrarActividadesAsociadas('{{$tablero->id}}', '{{$tablero->nombreTablero}}')" value="{{$tablero->nombreTablero}}">
+                            <input type="submit" class="divTablero" title="Ver actividades del tablero : {{$tablero->nombreTablero}}" id="tableros" onclick="mostrarActividadesAsociadas('{{$tablero->id}}', '{{$tablero->nombreTablero}}')" value="{{$tablero->nombreTablero}}">
                         @endforeach    
                     @endif
                     
                 </tbody>
                 <tfoot>
                         <td>
-                            <button id="tableros" data-toggle="modal" data-target="#createTablero"> 
+                            <button id="tableros"  data-toggle="modal" data-target="#createTablero" title="Agregar Tablero"> 
                                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
                                     <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
@@ -73,7 +73,7 @@
                         </td>
                         <tr>
                             <td>
-                                <a class="btn btn-primary" id="tableros" type="submit" href="{{ route('actividad.getActividadesUser', ['id'=> $id]) }}"> Total de actividades </a>
+                                <a class="btn btn-primary" title="Ver todas las actividades" id="tableros" type="submit" href="{{ route('actividad.getActividadesUser', ['id'=> $id]) }}"> Total de actividades </a>
                             </td>
                         </tr>
                 </tfoot>
@@ -86,7 +86,7 @@
                     <tr><th class="text-center"><h3 style="color:white;" id="tituloActividades">Todas las actividades</h3></th>
                     @if (!empty($tableros))
                     <th>
-                        <button id="actividades" class="actividades center-block" data-toggle="modal" data-target="#createActividad" style="width: fit-content;"> 
+                        <button id="actividades" title="Agregar Actividad" class="actividades center-block" data-toggle="modal" data-target="#createActividad" style="width: fit-content;"> 
                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
                                 <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
@@ -104,6 +104,7 @@
                                     @if (!empty($actividades))
                                         @foreach ($actividades as $actividad)
                                             <div id="actividades" class="col-3 p-2 justify-content-around bd-highlight actividads_{{$actividad->tablero_id}} divActividad visible">
+                                                <div style="background: #A0FFE6;border-radius: 5px;height:5px "></div>
                                                 <b>{{$actividad->nombre}} </b><br>
                                                 @if($actividad->status == "Pendiente")
                                                 <i class="fas fa-redo-alt"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>

@@ -37312,5 +37312,14 @@ function mostrarActividadesAsociadas(id, nombreTablero){
       }
     }
     $("#tituloActividades").html("Actividad del tablero : "+ nombreTablero);
+    
+    tableros = $('.divTablero');
+    for (var i=0; i < tableros.length; i++){
+      if($(tableros[i]).val() == nombreTablero) {
+        $(tableros[i]).css("background-color","#FE346E");
+      } else {
+        $(tableros[i]).css("background-color","#2C003E");
+      }
+    }
 }
 
