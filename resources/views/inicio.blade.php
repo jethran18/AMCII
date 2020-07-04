@@ -39,27 +39,27 @@
             <form action="{{ route('usuario.crearUsuario') }}" method="POST">
                 @csrf 
                 <h1>Crear Cuenta</h1>
-                <input type="text"  placeholder="Nombre" name="nombre"/>
+                <input type="text"  placeholder="Nombre" pattern="^[a-zA-Z]{3,50}" name="nombre"/>
                 @error('nombre')
                     <label id="error-label">Ingrese su nombre</label>
                 @enderror
-                <input type="text" placeholder="Apellidos" name="apellidos"/>
+                <input type="text" placeholder="Apellidos" pattern="^[a-zA-Z]{3,100}" name="apellidos"/>
                 @error('apellidos')
                     <label id="error-label">Ingrese sus apellidos</label>
                 @enderror
-                <input type="text" placeholder="Username" name="username"/>
+                <input type="text" placeholder="Username" name="username" pattern="^[a-zA-Z0-9]{3,50}"/>
                 @error('username')
                     <label id="error-label">Ingrese un nombre de usuario</label>
                 @enderror
-                <input type="email" placeholder="Email" name="correo"/>
+                <input type="email" placeholder="Email" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" name="correo"/>
                 @error('email')
                     <label id="error-label">Ingrese un correo electronico valido</label>
                 @enderror
-                <input type="password" placeholder="Contraseña" name="password"/>
+                <input type="password" placeholder="Contraseña"  pattern="[A-Za-z0-9!?-]{8,12}" name="password" id="password"/>
                 @error('password')
                     <label id="error-label">Ingrese una contraseña valida</label>
                 @enderror
-                <input type="password" placeholder="Repetir Contraseña" name="rpassword"/>
+                <input type="password" placeholder="Repetir Contraseña"   pattern="[A-Za-z0-9!?-]{8,12}" name="rpassword" id="confirm_password"/>
                 @error('rpassword')
                     <label id="error-label">Ingrese las misma contraseña</label>
                 @enderror
@@ -110,7 +110,22 @@
             </div>
         </div>
       
-        <script src="{{  asset('../../js/login_animacion.js') }}"></script>        
+        <script src="{{  asset('../../js/login_animacion.js') }}"></script>   
+        <script>
+            var password = document.getElementById("password");
+            var confirm_password = document.getElementById("confirm_password");
+
+            function validatePassword(){
+                if(password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Passwords Don't Match");
+                } else {
+                    confirm_password.setCustomValidity('');
+                }
+            }
+
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;    
+        </script>     
         
     </body>
 </html>

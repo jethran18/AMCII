@@ -15,6 +15,8 @@ class UsuarioController extends Controller
     //
     public function index(Request $request){
         $id = $request->id;
+        $name = $request->name;
+
         $tableros = DB::table('tableros')
         ->where('tableros.usuario_id', '=', $id)
         ->select('tableros.id', 'tableros.nombreTablero')
@@ -46,7 +48,7 @@ class UsuarioController extends Controller
             $actividad->status = $status;
         }
 
-        return view('principalUsuario',['id' =>  $id ], compact('tableros', 'id', 'actividades'));
+        return view('principalUsuario',['id' =>  $id, 'name' => $name], compact('tableros', 'id', 'actividades', 'name'));
     }
 
     public function getUsuario(Request $request) {
@@ -86,11 +88,12 @@ class UsuarioController extends Controller
         }
      
     
-        if($usuario[0]->rol == 'user'){
+        if($usuario->rol == 'user'){
             //recuperar tableros
-            $id =  $usuario[0]->id;
+            $id =  $usuario->id;
+            $name = $request->username;
             //recuperar activdades
-            return redirect()->route('principal.usuario',['id' => $id ]);
+            return redirect()->route('principal.usuario',['id' => $id, 'name' => $name]);
 
         }  else {
             return view('adminMenu');

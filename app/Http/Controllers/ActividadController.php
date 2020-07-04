@@ -11,7 +11,9 @@ use DB;
 
 class ActividadController extends Controller
 {
-    
+    public function __construct() {
+        parent::__construct();  
+    }
     //
     public function index(Request $request){
         //Recuper todas las actividades 

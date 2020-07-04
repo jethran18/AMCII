@@ -1,12 +1,13 @@
 function actividadesSeleccionadas(idUsuario){
     $("#btnEnviar").click(function(e) {
       var arrTodo = new Array();
-      /*Agrupamos todos los input con name=cbxEstudiante*/
+
       $('input[name="CheckListTarea"]').each(function(element) {
         var item = {};
         item.id = this.value;
         item.status = this.checked;
         arrTodo.push(item);
+        /*ajax fun */
       });
       /*
         Aquí convendría lanzar una petición Ajax al servidor
@@ -30,7 +31,7 @@ function actividadesSeleccionadas(idUsuario){
             id:idUsuario
         },
         success:function(response){
-             window.location=response.url+idUsuario;
+             location.reload();
         },
        });
     
