@@ -56,14 +56,14 @@
                 <tbody>
                     @if (!empty($tableros))
                         @foreach ($tableros as $tablero)
-                            <input type="submit" id="tableros" onclick="mostrarActividadesAsociadas('{{$tablero->id}}', '{{$tablero->nombreTablero}}')" value="{{$tablero->nombreTablero}}">
+                            <input type="submit" class="divTablero" title="Ver actividades del tablero : {{$tablero->nombreTablero}}" id="tableros" onclick="mostrarActividadesAsociadas('{{$tablero->id}}', '{{$tablero->nombreTablero}}')" value="{{$tablero->nombreTablero}}">
                         @endforeach    
                     @endif
                     
                 </tbody>
                 <tfoot>
                         <td>
-                            <button id="tableros" data-toggle="modal" data-target="#createTablero"> 
+                            <button id="tableros"  data-toggle="modal" data-target="#createTablero" title="Agregar Tablero"> 
                                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
                                     <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
@@ -73,7 +73,7 @@
                         </td>
                         <tr>
                             <td>
-                                <a class="btn btn-primary" id="tableros" type="submit" href="{{ route('actividad.getActividadesUser', ['id'=> $id]) }}"> Total de actividades </a>
+                                <a class="btn btn-primary" title="Ver todas las actividades" id="tableros" type="submit" href="{{ route('actividad.getActividadesUser', ['id'=> $id]) }}"> Total de actividades </a>
                             </td>
                         </tr>
                 </tfoot>
@@ -83,39 +83,45 @@
        <div id="contenedor-actividades" class="col-md-9">    
             <table class="table">
                 <thead>
-                    <tr><th class="text-center"><h3 style="margin-bottom: 0px; color:white;" id="tituloActividades">Todas las actividades</h3></th></tr>
+                    <tr><th class="text-center"><h3 style="color:white;" id="tituloActividades">Todas las actividades</h3></th>
+                    @if (!empty($tableros))
+                    <th>
+                        <button id="actividades" title="Agregar Actividad" class="actividades center-block" data-toggle="modal" data-target="#createActividad" style="width: fit-content;"> 
+                            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            </svg>
+                        </button>
+                    </th>
+                    @endif
+                    </tr>
                 </thead>
                 <tbody>
-                        <td>
-                            <div class="d-flex flex-row">
+                        <td colspan="2">
+                            <div class="d-flex justify-content-around row">
                                 @if (!empty($tableros))
-                                <div class="p-2 bd-highlight" id="actividades">
-                                    <button id="actividades" class="actividades center-block" data-toggle="modal" data-target="#createActividad" style="width: fit-content;"> 
-                                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
-                                            <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
-                                            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                        </svg>
-                                    </button>
-                                </div>
-                                @if (!empty($actividades))
-                                    @foreach ($actividades as $actividad)
-                                        <div id="actividades" class="p-2 bd-highlight actividads_{{$actividad->tablero_id}} divActividad visible">
-                                            <b>{{$actividad->nombre}} </b><br>
-                                            @if($actividad->status == "Pendiente")
-                                            <i class="fas fa-redo-alt"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
-                                            @elseif ($actividad->status == "Proxima a estar retrasada")
-                                            <i class="fas fa-exclamation-triangle"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
-                                            @else
-                                            <i class="fas fa-ban"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
-                                            @endif
-                                            <i class="fas fa-calendar-alt"></i>  <b>{{$actividad->fechaCreacion}}</b><br>
-                                            <a class="btn btn-info" data-toggle="modal" data-target="#verActividad_{{$actividad->id}}"><i class="far fa-eye"></i></a>
-                                            <a class="btn btn-primary" data-toggle="modal" data-target="#editActividad_{{$actividad->id}}"><i class="fas fa-edit"></i></a>
-                                            <a class="btn btn-danger" data-toggle="modal" data-target="#deleteActividad_{{$actividad->id}}"><i class="fas fa-trash-alt"></i></a>
-                                        </div>
-                                    @endforeach    
-                                @endif
+                                    @if (!empty($actividades))
+                                        @foreach ($actividades as $actividad)
+                                            <div id="actividades" class="col-3 p-2 justify-content-around bd-highlight actividads_{{$actividad->tablero_id}} divActividad visible">
+                                                <div style="background: #A0FFE6;border-radius: 5px;height:5px "></div>
+                                                <b>{{$actividad->nombre}} </b><br>
+                                                @if($actividad->status == "Pendiente")
+                                                <i class="fas fa-redo-alt"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
+                                                @elseif ($actividad->status == "Proxima a estar retrasada")
+                                                <i class="fas fa-exclamation-triangle"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
+                                                @elseif ($actividad->status == "Realizada")
+                                                <i class="fas fa-check"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
+                                                @else
+                                                <i class="fas fa-ban"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
+                                                @endif
+                                                <i class="fas fa-calendar-alt"></i>  <b>{{$actividad->fechaCreacion}}</b><br>
+                                                <a class="actividades" style="cursor: pointer" title="Ver actividad" data-toggle="modal" data-target="#verActividad_{{$actividad->id}}"><i class="far fa-eye"></i></a>
+                                                <a class="actividades" style="cursor: pointer" title="Editar actividad" data-toggle="modal" data-target="#editActividad_{{$actividad->id}}"><i class="fas fa-edit"></i></a>
+                                                <a class="actividades" style="cursor: pointer" title="Eliminar actividad" data-toggle="modal" data-target="#deleteActividad_{{$actividad->id}}"><i class="fas fa-trash-alt"></i></a>
+                                            </div>
+                                        @endforeach    
+                                    @endif
                                 @endif
                             </div>
                         </td>

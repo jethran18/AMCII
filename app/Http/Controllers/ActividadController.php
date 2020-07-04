@@ -21,7 +21,12 @@ class ActividadController extends Controller
     }
 
     public function store(Request $request) {
-
+        $request->validate([
+            'nombreActividad' => 'required|min:3|max:50',
+            'descripcionActividad' => 'required|min:3|max:50',
+            'fechaCreacionActividad' => 'required',
+            'tablero_id' => 'required'
+        ]);
         $now = Carbon::now();
         Actividad::create([
             'nombre' => $request->nombreActividad,

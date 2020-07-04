@@ -28,7 +28,8 @@ class ActividadCreateRequest extends FormRequest
             //
             'nombre' => 'required|min:3|max:50',
             'descripcion' => 'required|min:3|max:50',
-            
+            'fechaCreacion' => 'required',
+            'tablero_id' => 'required'
         ];
     }
 }
