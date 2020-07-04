@@ -110,6 +110,8 @@
                                                 <i class="fas fa-redo-alt"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
                                                 @elseif ($actividad->status == "Proxima a estar retrasada")
                                                 <i class="fas fa-exclamation-triangle"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
+                                                @elseif ($actividad->status == "Realizada")
+                                                <i class="fas fa-check"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
                                                 @else
                                                 <i class="fas fa-ban"></i> <b style="color: rgba(210, 250, 251, 0.8);">{{$actividad->status}}</b><br>
                                                 @endif

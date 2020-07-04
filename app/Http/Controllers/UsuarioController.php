@@ -28,25 +28,27 @@ class UsuarioController extends Controller
         $now = Carbon::now();
         $status = "";
         foreach ($actividades as $actividad){
+            if($actividad->status != "Realizada"){
 
-            $fechaInicial = strtotime($actividad->fechaCreacion);
-            $fechaActual= strtotime(date("Y-m-d"));
-            $dias = ( $fechaActual - $fechaInicial ) / 86400;
-            if($fechaInicial >= $fechaActual){
-                $dias = abs($dias); 
-                $dias = floor($dias);
-                if($dias > 3){
-                    $status = "Pendiente";
-                }elseif($dias >= 0){
-                    $status = "Proxima a estar retrasada";
+                $fechaInicial = strtotime($actividad->fechaCreacion);
+                $fechaActual= strtotime(date("Y-m-d"));
+                $dias = ( $fechaActual - $fechaInicial ) / 86400;
+                if($fechaInicial >= $fechaActual){
+                    $dias = abs($dias); 
+                    $dias = floor($dias);
+                    if($dias > 3){
+                        $status = "Pendiente";
+                    }elseif($dias >= 0){
+                        $status = "Proxima a estar retrasada";
+                    }
+                }else{
+                    $status = "Retrasada";
                 }
-            }else{
-                $status = "Retrasada";
+                
+                $actividad->status = $status;
             }
-            
-            $actividad->status = $status;
         }
-
+        
         return view('principalUsuario',['id' =>  $id ], compact('tableros', 'id', 'actividades'));
     }
 
